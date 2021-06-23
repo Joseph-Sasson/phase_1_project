@@ -25,8 +25,7 @@ const createTable = info =>{
   const westTeams = document.createElement('div')
   const eastTeams = document.createElement('div')
   if (info.team.conference === 'West'){
-    westTeams.textContent = info.team.full_name}else
-    if (info.team.conference === 'East'){
+    westTeams.textContent = info.team.full_name}else{
       eastTeams.textContent = info.team.full_name}
   west.append(westTeams)
   east.append(eastTeams)
