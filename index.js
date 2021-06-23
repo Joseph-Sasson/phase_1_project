@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  getInfo()
+  getTeamNames()
   const body = document.querySelector('body')
   const header = document.createElement('h1')
   header.textContent = 'My Player Profile'
@@ -12,22 +12,22 @@ document.addEventListener('DOMContentLoaded',()=>{
   body.append(header,west,east)
 })
 
-const getInfo = () =>{
-  // for(let i = 0; i < 36; i++)
-  fetch(`https://www.balldontlie.io/api/v1/players?per_page=25`)
+const getTeamNames = () =>{
+  fetch(`https://www.balldontlie.io/api/v1/teams`)
   .then(res=>res.json())
   .then(data=>data.data.forEach(createTable))
 }
 
 const createTable = info =>{
+  const conference = info.conference
+  const teamName = info.full_name
   const west = document.querySelector('#WEST')
   const east = document.querySelector('#EAST')
   const westTeams = document.createElement('div')
   const eastTeams = document.createElement('div')
-  if (info.team.conference === 'West'){
-    westTeams.textContent = info.team.full_name}else{
-      eastTeams.textContent = info.team.full_name}
+  if (conference === 'West'){
+    westTeams.textContent = teamName}else
+      {eastTeams.textContent = teamName}
   west.append(westTeams)
   east.append(eastTeams)
-  }
-  
+}
