@@ -30,4 +30,6 @@ const createTable = info =>{
       {eastTeams.textContent = teamName}
   west.append(westTeams)
   east.append(eastTeams)
+  if (westTeams.textContent === ''){westTeams.remove()}
+  if (eastTeams.textContent === ''){eastTeams.remove()}
 }
