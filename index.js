@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 const getTeamNames = () =>{
   fetch(`https://www.balldontlie.io/api/v1/teams`)
   .then(res=>res.json())
-  .then(data=>data.data.forEach(createTable))
+  .then(data=>data.data.forEach(renderNames))
 }
 
-const createTable = info =>{
+const renderNames = info =>{
   const conference = info.conference
   const teamName = info.full_name
   const west = document.querySelector('#WEST')
