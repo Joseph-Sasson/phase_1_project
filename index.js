@@ -31,26 +31,3 @@ const createTable = info =>{
   west.append(westTeams)
   east.append(eastTeams)
   }
-  // div.addEventListener('click',()=>playerInfo(info))
-  // const table = document.createElement('table')
-  // const tableHeader = document.createElement('thead')
-  // const row = document.createElement('tr')
-  // const name = document.createElement('td')
-  // name.textContent = info.first_name + ' ' + info.last_name
-  // name.addEventListener('click',()=>playerInfo(info))
-  // const team = document.createElement('td')
-  // team.textContent = info.team.full_name
-  // row.append(name,team)
-  // tableHeader.append(row)
-  // table.append(tableHeader)
-  // div.append(table)
-  // body.append()
-// }
-
-const playerInfo = info =>{
-  // console.log(info)
-  const teams = document.querySelectorAll('div')
-  if (teams.textContent === 'Indiana Pacers'){
-    teams.textContent = ''
-    teams.textContent = info.first_name + ' ' + info.last_name}else{return teams.textContent = ''}
-  }
