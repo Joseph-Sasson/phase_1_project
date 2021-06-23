@@ -30,3 +30,4 @@ const createTable = info =>{
   west.append(westTeams)
   east.append(eastTeams)
   }
+  
