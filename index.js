@@ -1,22 +1,11 @@
 document.addEventListener('DOMContentLoaded',()=>{
-  getInfo()
-  const main = document.querySelector('#main')
+  const body = document.querySelector('body')
   const header = document.createElement('h1')
-  header.textContent = 'My Player Profile'
-  const west = document.createElement('h1')
-  west.id = 'WEST'
-  west.textContent = 'West'
-  const east = document.createElement('h1')
-  east.id = 'EAST'
-  east.textContent = 'East'
-  const roster = document.createElement('h3')
-  roster.textContent = 'ROSTER'
-  // roster.style.textDecoration = 'underline'
-  roster.id ="ROSTER"
-  roster.style.display = 'none'
-  // const playerNames = document.createElement('p')
-  // playerNames.id = "PLAYERS"
-  main.append(header,west,east,roster)
+  header.id = 'NBA'
+  header.textContent = 'NBA Team Profile'
+  header.style.display = 'none'
+  body.append(header)
+  getInfo()
 })
 
 let allPlayers = []
@@ -31,36 +20,114 @@ const getInfo = () =>{
 }
 
 const renderPlayers = () =>{
-  const main = document.querySelector('#main')
   const loading = document.querySelector('#loading')
   loading.style.display = 'none'
+  const header = document.querySelector('#NBA')
+  header.style.display = 'block'
+  const main = document.querySelector('#main')
   main.style.display = 'block'
   let allTeams = allPlayers.map(player=>player.team)
   allTeams.forEach(team=>{
     if (!teams.filter(t => t.id === team.id).length > 0){teams.push(team)}
   })
-  teams.forEach(createTable)
+  createTable(teams)
 }
 
 setTimeout(renderPlayers,1500)
 
 const createTable = info =>{
-  const west = document.querySelector('#WEST')
-  const east = document.querySelector('#EAST')
-  const westTeams = document.createElement('div')
-  westTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
-  const eastTeams = document.createElement('div')
-  eastTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
-  if (info.conference === 'West'){
-    westTeams.textContent = info.full_name}
-    else {eastTeams.textContent = info.full_name}
-  west.append(westTeams)
-  east.append(eastTeams)
-  }
+  const body = document.querySelector('body')
+  const table = document.createElement('table')
+  const eastHead = document.createElement('thead')
+  const eastHeadRow = document.createElement('tr')
+  const eastName = document.createElement('th')
+  eastName.textContent = 'EAST'
+  eastHeadRow.append(eastName)
+  eastHead.append(eastHeadRow)
+  const eastBody = document.createElement('tbody')
+  const eastDivisionRow = document.createElement('tr')
+  const atlantic = document.createElement('td')
+  atlantic.textContent = 'ATLANTIC'
+  atlantic.id = 'atl'
+  const central = document.createElement('td')
+  central.textContent = 'CENTRAL'
+  central.id = 'cen'
+  const southeast = document.createElement('td')
+  southeast.textContent = 'SOUTHEAST'
+  southeast.id = 'sea'
+  eastDivisionRow.append(atlantic,central,southeast)
+  eastBody.append(eastDivisionRow)
+  const westHead = document.createElement('thead')
+  const westHeadRow = document.createElement('tr')
+  const westName = document.createElement('th')
+  westName.textContent = 'WEST'
+  westHeadRow.append(westName)
+  westHead.append(westHeadRow)
+  const westBody = document.createElement('tbody')
+  const westDivisionRow = document.createElement('tr')
+  const northwest = document.createElement('td')
+  northwest.textContent = 'NORTHWEST'
+  northwest.id = 'nor'
+  const pacific = document.createElement('td')
+  pacific.textContent = 'PACIFIC'
+  pacific.id = 'pac'
+  const southwest = document.createElement('td')
+  southwest.textContent = 'SOUTHWEST'
+  southwest.id = 'swe'
+  westDivisionRow.append(northwest,pacific,southwest)
+  westBody.append(westDivisionRow)
+  table.append(eastHead,eastBody,westHead,westBody)
+  body.append(table)
+  teams.forEach(getTableInfo)
+}
+
+const getTableInfo = info =>{
+  const atlantic = document.querySelector('#atl')
+  const atlanticTeamRow = document.createElement('tr')
+  const atlanticTeams = document.createElement('td')
+  if(info.division === 'Atlantic'){atlanticTeams.textContent = info.full_name}
+  atlanticTeamRow.append(atlanticTeams)
+  atlantic.append(atlanticTeamRow)
+  const central = document.querySelector('#cen')
+  const centralTeamRow = document.createElement('tr')
+  const centralTeams = document.createElement('td')
+  if (info.division === 'Central'){centralTeams.textContent = info.full_name}
+  centralTeamRow.append(centralTeams)
+  central.append(centralTeamRow)
+  const southeast = document.querySelector('#sea')
+  const southeastTeamRow = document.createElement('tr')
+  const southeastTeams = document.createElement('td')
+  if (info.division === 'Southeast'){southeastTeams.textContent = info.full_name}
+  southeastTeamRow.append(southeastTeams)
+  southeast.append(southeastTeamRow)
+  const northwest = document.querySelector('#nor')
+  const northwestTeamRow = document.createElement('tr')
+  const northwestTeams = document.createElement('td')
+  if (info.division === 'Northwest'){northwestTeams.textContent = info.full_name}
+  northwestTeamRow.append(northwestTeams)
+  northwest.append(northwestTeamRow)
+  const pacific = document.querySelector('#pac')
+  const pacificTeamRow = document.createElement('tr')
+  const pacificTeams = document.createElement('td')
+  if (info.division === 'Pacific'){pacificTeams.textContent = info.full_name}
+  pacificTeamRow.append(pacificTeams)
+  pacific.append(pacificTeamRow)
+  const southwest = document.querySelector('#swe')
+  const southwestTeamRow = document.createElement('tr')
+  const southwestTeams = document.createElement('td')
+  if (info.division === 'Southwest'){southwestTeams.textContent = info.full_name}
+  southwestTeamRow.append(southwestTeams)
+  southwest.append(southwestTeamRow)
+  if (atlanticTeamRow.textContent === ''){atlanticTeamRow.remove()}
+  if (centralTeamRow.textContent === ''){centralTeamRow.remove()}
+  if (southeastTeamRow.textContent === ''){southeastTeamRow.remove()}
+  if (northwestTeamRow.textContent === ''){northwestTeamRow.remove()}
+  if (pacificTeamRow.textContent === ''){pacificTeamRow.remove()}
+  if (southwestTeamRow.textContent === ''){southwestTeamRow.remove()}
+
+}
 
 const renderPlayerNames = info => {
-  // console.log(info)
-  // console.log(info.first_name)
   const west = document.querySelector('#WEST')
   west.style.display = 'none'
   const east = document.querySelector('#EAST')
@@ -70,5 +137,4 @@ const renderPlayerNames = info => {
   const playerNames = document.createElement('div')
   playerNames.textContent = info.first_name + " " + info.last_name
   roster.append(playerNames) 
-  // console.log(info.first_name + " " + info.last_name)
 }
