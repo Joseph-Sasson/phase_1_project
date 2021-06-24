@@ -86,7 +86,7 @@ const getTableInfo = info =>{
   const atlanticTeamRow = document.createElement('tr')
   const atlanticTeams = document.createElement('td')
   if(info.division === 'Atlantic'){atlanticTeams.textContent = info.full_name}
-  atlanticTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  atlanticTeams.addEventListener('click', (e) => allPlayers.forEach(renderPlayerNames))
   atlanticTeamRow.append(atlanticTeams)
   atlantic.append(atlanticTeamRow)
   const central = document.querySelector('#cen')
@@ -134,6 +134,7 @@ const getTableInfo = info =>{
 }
 
 const renderPlayerNames = info => {
+  console.log(info)
   const body = document.querySelector('body')
   const table = document.querySelector('table')
   table.style.display = 'none'
