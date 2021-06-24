@@ -19,7 +19,7 @@ const getInfo = () =>{
     allPlayers = [...allPlayers, ...data.data]})
 }
 
-const renderPlayers = () =>{
+const renderTeams = () =>{
   const loading = document.querySelector('#loading')
   loading.style.display = 'none'
   const header = document.querySelector('#NBA')
@@ -30,12 +30,21 @@ const renderPlayers = () =>{
   allTeams.forEach(team=>{
     if (!teams.filter(t => t.id === team.id).length > 0){teams.push(team)}
   })
-  createTable(teams)
+  const form = document.createElement('form')
+  const search = document.createElement('input')
+  search.type = 'text'
+  search.name = 'search'
+  search.id = 'search'
+  search.placeholder = 'Enter Team Name...'
+  form.addEventListener('submit', (e)=>searchBar(e, teams))
+  form.append(search)
+  header.append(form)
+  createTable()
 }
 
-setTimeout(renderPlayers,1500)
+setTimeout(renderTeams,1500)
 
-const createTable = info =>{
+const createTable = () =>{
   const body = document.querySelector('body')
   const table = document.createElement('table')
   const eastHead = document.createElement('thead')
@@ -130,7 +139,6 @@ const getTableInfo = info =>{
   if (northwestTeamRow.textContent === ''){northwestTeamRow.remove()}
   if (pacificTeamRow.textContent === ''){pacificTeamRow.remove()}
   if (southwestTeamRow.textContent === ''){southwestTeamRow.remove()}
-
 }
 
 const renderPlayerNames = info => {
@@ -143,4 +151,22 @@ const renderPlayerNames = info => {
   const playerNames = document.createElement('div')
   playerNames.textContent = info.first_name + " " + info.last_name
   body.append(playerNames) 
+}
+
+const searchBar = (e, info) => {
+  e.preventDefault()
+  const table = document.querySelector('table').style.display = 'none'
+  const body = document.querySelector('body')
+  const search = e.target.search.value
+  const teamList = document.createElement('ul')
+  const teamName = document.createElement('li')
+  teamName.textContent = ''
+  teams.find(team=>{
+    if (search.toLowerCase() === team.full_name.toLowerCase()
+     || search.toLowerCase() === team.city.toLowerCase()
+     || search.toLowerCase() === team.name.toLowerCase())
+     {teamName.textContent = team.full_name}
+  })
+  teamList.append(teamName)
+  body.append(teamList)
 }
