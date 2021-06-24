@@ -10,3 +10,4 @@ This project is going to showcase how to add information about NBA teams and pla
 # Bonus Deliverable
 - Be able to search by player name.
 - Be able to keep the team name that is clicked on the page while everything else disappears.
+- Add "Team Roster" for each team on click when roster shows up

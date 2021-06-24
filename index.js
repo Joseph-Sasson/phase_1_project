@@ -80,48 +80,48 @@ const createTable = info =>{
   body.append(table)
   teams.forEach(getTableInfo)
 }
-
+// var click1 = atlanticClick
 const getTableInfo = info =>{
   const atlantic = document.querySelector('#atl')
   const atlanticTeamRow = document.createElement('tr')
   const atlanticTeams = document.createElement('td')
   if(info.division === 'Atlantic'){atlanticTeams.textContent = info.full_name}
-  atlanticTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  atlanticTeams.addEventListener('click', (e) => allPlayers.forEach(player => renderPlayerNames(player, e)))
   atlanticTeamRow.append(atlanticTeams)
   atlantic.append(atlanticTeamRow)
   const central = document.querySelector('#cen')
   const centralTeamRow = document.createElement('tr')
   const centralTeams = document.createElement('td')
   if (info.division === 'Central'){centralTeams.textContent = info.full_name}
-  centralTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  centralTeams.addEventListener('click', (e) => allPlayers.forEach(player => renderPlayerNames(player, e)))
   centralTeamRow.append(centralTeams)
   central.append(centralTeamRow)
   const southeast = document.querySelector('#sea')
   const southeastTeamRow = document.createElement('tr')
   const southeastTeams = document.createElement('td')
   if (info.division === 'Southeast'){southeastTeams.textContent = info.full_name}
-  southeastTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  southeastTeams.addEventListener('click', (e) => allPlayers.forEach(player => renderPlayerNames(player, e)))
   southeastTeamRow.append(southeastTeams)
   southeast.append(southeastTeamRow)
   const northwest = document.querySelector('#nor')
   const northwestTeamRow = document.createElement('tr')
   const northwestTeams = document.createElement('td')
   if (info.division === 'Northwest'){northwestTeams.textContent = info.full_name}
-  northwestTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  northwestTeams.addEventListener('click', (e) => allPlayers.forEach(player => renderPlayerNames(player, e)))
   northwestTeamRow.append(northwestTeams)
   northwest.append(northwestTeamRow)
   const pacific = document.querySelector('#pac')
   const pacificTeamRow = document.createElement('tr')
   const pacificTeams = document.createElement('td')
   if (info.division === 'Pacific'){pacificTeams.textContent = info.full_name}
-  pacificTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  pacificTeams.addEventListener('click', (e) => allPlayers.forEach(player => renderPlayerNames(player,e)))
   pacificTeamRow.append(pacificTeams)
   pacific.append(pacificTeamRow)
   const southwest = document.querySelector('#swe')
   const southwestTeamRow = document.createElement('tr')
   const southwestTeams = document.createElement('td')
   if (info.division === 'Southwest'){southwestTeams.textContent = info.full_name}
-  southwestTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  southwestTeams.addEventListener('click', (e) => allPlayers.forEach(player => renderPlayerNames(player, e)))
   southwestTeamRow.append(southwestTeams)
   southwest.append(southwestTeamRow)
   if (atlanticTeamRow.textContent === ''){atlanticTeamRow.remove()}
@@ -133,13 +133,20 @@ const getTableInfo = info =>{
 
 }
 
-const renderPlayerNames = info => {
-  const body = document.querySelector('body')
-  const table = document.querySelector('table')
-  table.style.display = 'none'
-  const header = document.querySelector('#NBA')
-  header.textContent = "NBA Team Roster"
-  const playerNames = document.createElement('div')
-  playerNames.textContent = info.first_name + " " + info.last_name
-  body.append(playerNames) 
-}
+const renderPlayerNames = (player, e) => {
+  const teamName = e.target.innerText
+  if(player.team.full_name === teamName){
+    const body = document.querySelector('body')
+    const table = document.querySelector('table')
+    table.style.display = 'none'
+    const header = document.querySelector('#NBA')
+    header.textContent = "NBA Team Roster"
+    const playerNames = document.createElement('div')
+    body.append(playerNames)
+    playerNames.textContent = player.first_name + " " + player.last_name
+    // console.log(playerNames)
+  }
+ }
+
+
+
