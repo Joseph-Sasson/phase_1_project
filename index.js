@@ -9,12 +9,14 @@ document.addEventListener('DOMContentLoaded',()=>{
   const east = document.createElement('h1')
   east.id = 'EAST'
   east.textContent = 'East'
-  main.append(header,west,east)
   const roster = document.createElement('h3')
+  roster.textContent = 'ROSTER'
+  // roster.style.textDecoration = 'underline'
   roster.id ="ROSTER"
+  roster.style.display = 'none'
   // const playerNames = document.createElement('p')
   // playerNames.id = "PLAYERS"
-  body.append(header,west,east, roster)
+  main.append(header,west,east,roster)
 })
 
 let allPlayers = []
@@ -46,44 +48,27 @@ const createTable = info =>{
   const west = document.querySelector('#WEST')
   const east = document.querySelector('#EAST')
   const westTeams = document.createElement('div')
-  westTeams.addEventListener('click', teamButtonClicker)
+  westTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   const eastTeams = document.createElement('div')
-  eastTeams.addEventListener('click', teamButtonClicker)
+  eastTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   if (info.conference === 'West'){
     westTeams.textContent = info.full_name}
     else {eastTeams.textContent = info.full_name}
   west.append(westTeams)
   east.append(eastTeams)
   }
-  // eastTeams.addEventListener('click', teamButtonClicker)
-  // if (info.team.conference === 'West'){
-  //   westTeams.textContent = info.team.full_name}else{
-  //     eastTeams.textContent = info.team.full_name}
-  // west.append(westTeams)
-  // east.append(eastTeams)
-  // westTeams.className = "western"
-  
-  
 
-// const teamButtonClicker = () => {
-// btn = document.querySelector('.western');
-// btn.addEventListener("click", myFunc);
-// }
-
-
-const renderPlayerNames = (info) => {
+const renderPlayerNames = info => {
+  // console.log(info)
+  // console.log(info.first_name)
+  const west = document.querySelector('#WEST')
+  west.style.display = 'none'
+  const east = document.querySelector('#EAST')
+  east.style.display = 'none'
   const roster = document.querySelector('#ROSTER')
+  roster.style.display = 'block'
   const playerNames = document.createElement('div')
   playerNames.textContent = info.first_name + " " + info.last_name
   roster.append(playerNames) 
-  console.log(info.first_name + " " + info.last_name)
-}
-
-const teamButtonClicker = info => {
-  console.log('hello');
-  fetch(`https://www.balldontlie.io/api/v1/players?per_page=25`)
-  .then(res=>res.json())
-  .then(data=>data.data.forEach(renderPlayerNames))
-
-
+  // console.log(info.first_name + " " + info.last_name)
 }
