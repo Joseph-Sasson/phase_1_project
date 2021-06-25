@@ -55,12 +55,7 @@ table{
   text-align: center;
 }
 
-.teams{
-  margin-left: auto;
-  margin-right: auto;
-  margin: auto;
-  margin-bottom: auto;
-  margin-top: auto;
+td.teams{
   text-align: center;
 }
 

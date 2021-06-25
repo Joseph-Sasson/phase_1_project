@@ -182,7 +182,7 @@ const searchBar = e => {
     //  WHY DOESNT THIS ELSE WORK??
     //  else {teamName.textContent = 'NOT FOUND'}
   })
-  teamName.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
+  teamName.addEventListener('click', (e) => allPlayers.forEach(player => renderPlayerNames(player, e)))
   teamList.append(teamName)
   body.append(teamList)
   form.reset()
