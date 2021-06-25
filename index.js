@@ -98,6 +98,7 @@ const getTableInfo = info =>{
   const atlantic = document.querySelector('#atl')
   const atlanticTeamRow = document.createElement('tr')
   const atlanticTeams = document.createElement('td')
+  atlanticTeams.className = 'teams'
   if(info.division === 'Atlantic'){atlanticTeams.textContent = info.full_name}
   atlanticTeams.addEventListener('click', (e) => allPlayers.forEach(renderPlayerNames))
   atlanticTeamRow.append(atlanticTeams)
@@ -105,6 +106,7 @@ const getTableInfo = info =>{
   const central = document.querySelector('#cen')
   const centralTeamRow = document.createElement('tr')
   const centralTeams = document.createElement('td')
+  centralTeams.className = 'teams'
   if (info.division === 'Central'){centralTeams.textContent = info.full_name}
   centralTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   centralTeamRow.append(centralTeams)
@@ -112,6 +114,7 @@ const getTableInfo = info =>{
   const southeast = document.querySelector('#sea')
   const southeastTeamRow = document.createElement('tr')
   const southeastTeams = document.createElement('td')
+  southeastTeams.className = 'teams'
   if (info.division === 'Southeast'){southeastTeams.textContent = info.full_name}
   southeastTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   southeastTeamRow.append(southeastTeams)
@@ -119,6 +122,7 @@ const getTableInfo = info =>{
   const northwest = document.querySelector('#nor')
   const northwestTeamRow = document.createElement('tr')
   const northwestTeams = document.createElement('td')
+  northwestTeams.className = 'teams'
   if (info.division === 'Northwest'){northwestTeams.textContent = info.full_name}
   northwestTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   northwestTeamRow.append(northwestTeams)
@@ -126,6 +130,7 @@ const getTableInfo = info =>{
   const pacific = document.querySelector('#pac')
   const pacificTeamRow = document.createElement('tr')
   const pacificTeams = document.createElement('td')
+  pacificTeams.className = 'teams'
   if (info.division === 'Pacific'){pacificTeams.textContent = info.full_name}
   pacificTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   pacificTeamRow.append(pacificTeams)
@@ -133,6 +138,7 @@ const getTableInfo = info =>{
   const southwest = document.querySelector('#swe')
   const southwestTeamRow = document.createElement('tr')
   const southwestTeams = document.createElement('td')
+  southwestTeams.className = 'teams'
   if (info.division === 'Southwest'){southwestTeams.textContent = info.full_name}
   southwestTeams.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   southwestTeamRow.append(southwestTeams)
