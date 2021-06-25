@@ -164,6 +164,7 @@ const renderPlayerNames = info => {
 
 const searchBar = (e, info) => {
   e.preventDefault()
+  const form = document.querySelector('form')
   const table = document.querySelector('table').style.display = 'none'
   const body = document.querySelector('body')
   const search = e.target.search.value
@@ -181,4 +182,5 @@ const searchBar = (e, info) => {
   teamName.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   teamList.append(teamName)
   body.append(teamList)
+  form.reset()
 }

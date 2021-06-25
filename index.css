@@ -1,6 +1,6 @@
 #loading{
   text-align: center;
-  font-size: 500%;
+  font-size: 400%;
   font-family: fantasy;
   color: red;
   text-transform: uppercase;
@@ -12,7 +12,7 @@
 
 #NBA{
   text-align: center;
-  font-size: 600%;
+  font-size: 500%;
   font-weight: bolder;
   color: blue;
   font-family: fantasy;
@@ -25,14 +25,16 @@ body{
 }
 
 #search{
-  font-size: .5in;
+  font-size: .25in;
   text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 /* HOW DO I CENTER ALL THE TABLE TEXT??? */
 table{
   border: 2px solid black;
   color: red;
-  font-size: 100%;
+  font-size: 600%;
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
@@ -40,7 +42,7 @@ table{
   text-align: center;
 }
 #EAST,#WEST{
-  font-size: 500%;
+  font-size: 60%;
   font-weight: bolder;
   color: blue;
 }
@@ -49,7 +51,7 @@ table{
   border: 2px solid black;
   color: blue;
   font-weight: bold;
-  font-size: 350%;
+  font-size: 31%;
   text-align: center;
 }
 
