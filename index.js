@@ -162,7 +162,7 @@ const renderPlayerNames = info => {
   body.append(playerNames) 
 }
 
-const searchBar = (e, info) => {
+const searchBar = e => {
   e.preventDefault()
   const form = document.querySelector('form')
   const table = document.querySelector('table').style.display = 'none'
