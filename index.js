@@ -144,9 +144,29 @@ const renderPlayerNames = (player, e) => {
     const playerNames = document.createElement('div')
     body.append(playerNames)
     playerNames.textContent = player.first_name + " " + player.last_name
+    // if {
+    //   player.value = "null"
+    //   player.value = "n/a"
+    //   console.log(player.first_name + " " + player.last_name + " Height: " + player.height_feet + " ft " + player.height_inches + " in Weight: " + player.weight_pounds + " lbs " + "Position: " + player.position)
+    // }
+    console.log(player.first_name + " " + player.last_name + " Height: " + player.height_feet + " ft " + player.height_inches + " in Weight: " + player.weight_pounds + " lbs " + "Position: " + player.position)
+    //  + player.position
+    // playerNames.addEventListener('click', (ev) => playerNames.forEach(playerinfo => renderPlayerInfo(player, ev)))
     // console.log(playerNames)
   }
  }
 
 
-
+// const renderPlayerInfo = (player, ev) => {
+//   const playerName = e.target.innerText
+//   if(player.last_name === playerName){
+//     const playerBody = document.querySelector('body')
+//     const playerTable = document.querySelector('table')
+//     playerTable.style.display = 'none'
+//     const header = document.querySelector('#NBA')
+//     header.textContent = "Player Info"
+//     const playerInfo = document.createElement('div')
+//     body.append(playerInfo)
+//     console.log(player)
+//     playerInfo.textContent = player.first_name + " " + player.last_name + " " + 
+// }
