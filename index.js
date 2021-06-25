@@ -35,7 +35,7 @@ const renderTeams = () =>{
   search.type = 'text'
   search.name = 'search'
   search.id = 'search'
-  search.placeholder = 'Enter Team Name...'
+  search.placeholder = 'Enter Team Name'
   form.addEventListener('submit', (e)=>searchBar(e, teams))
   form.append(search)
   header.append(form)
@@ -49,9 +49,11 @@ const createTable = () =>{
   const table = document.createElement('table')
   const eastHead = document.createElement('thead')
   const eastHeadRow = document.createElement('tr')
+  const the = document.createElement('th')
   const eastName = document.createElement('th')
   eastName.textContent = 'EAST'
-  eastHeadRow.append(eastName)
+  eastName.id = 'EAST'
+  eastHeadRow.append(the,eastName)
   eastHead.append(eastHeadRow)
   const eastBody = document.createElement('tbody')
   const eastDivisionRow = document.createElement('tr')
@@ -68,9 +70,11 @@ const createTable = () =>{
   eastBody.append(eastDivisionRow)
   const westHead = document.createElement('thead')
   const westHeadRow = document.createElement('tr')
+  const th = document.createElement('th')
   const westName = document.createElement('th')
   westName.textContent = 'WEST'
-  westHeadRow.append(westName)
+  westName.id = 'WEST'
+  westHeadRow.append(th,westName)
   westHead.append(westHeadRow)
   const westBody = document.createElement('tbody')
   const westDivisionRow = document.createElement('tr')
@@ -142,7 +146,6 @@ const getTableInfo = info =>{
 }
 
 const renderPlayerNames = info => {
-  console.log(info)
   const body = document.querySelector('body')
   const table = document.querySelector('table')
   table.style.display = 'none'
@@ -166,7 +169,10 @@ const searchBar = (e, info) => {
      || search.toLowerCase() === team.city.toLowerCase()
      || search.toLowerCase() === team.name.toLowerCase())
      {teamName.textContent = team.full_name}
+    //  WHY DOESNT THIS ELSE WORK??
+    //  else {teamName.textContent = 'NOT FOUND'}
   })
+  teamName.addEventListener('click', () => allPlayers.forEach(renderPlayerNames))
   teamList.append(teamName)
   body.append(teamList)
 }
